@@ -1,0 +1,93 @@
+h1 {
+    text-align: center;
+    
+    
+
+}
+
+.conteneur {
+    background-color: white;
+    margin: 8vh 2vw;
+    border-radius: 2vw;
+    padding: 0vh 0vh 2vh 0vh;
+}
+
+.groupe1{
+    background-color: white;
+    margin: 2vh 2vw;
+    border-radius: 2vw;
+    padding: 1vh 2vw;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.groupe2 {
+    background-color: white;
+    margin: 2vh 2vw;
+    border-radius: 2vw;
+    padding: 1vh 2vw;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.groupe3 {
+    background-color: white;
+    margin: 2vh 2vw;
+    border-radius: 2vw;
+    padding: 1vh 2vw;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.groupe4 {
+    background-color: white;
+    margin: 2vh 2vw;
+    border-radius: 2vw;
+    padding: 1vh 2vw;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.groupe5 {
+    background-color: white;
+    margin: 2vh 2vw;
+    border-radius: 2vw;
+    padding: 1vh 2vw;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.groupe6 {
+    background-color: white;
+    margin: 2vh 2vw;
+    border-radius: 2vw;
+    padding: 1vh 2vw;
+}
+.nav {
+    display: flex;
+    margin: 0vh 2vw;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.liens_nav {
+    margin: 0vh 1vw;
+    background-color: #0a50b1;
+    color: white;
+    width: 14vw;
+    border-radius: 2vh;
+    height: 5vh;
+    text-align: center;
+    padding: 1vh 0vw;
+    font-size: larger;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.gp {
+    color: white !important;
+    text-decoration: none !important;
+}
+.header {
+    top: 0px;
+    position: fixed;
+    background-color: white;
+    border-radius: 0.5vh;
+    width: 98vw;
+    margin: 0vh 1vw;
+}
+
+h2{
+    text-align: center;
+    margin-top: 6vh;
+    text-decoration: underline; 
+}

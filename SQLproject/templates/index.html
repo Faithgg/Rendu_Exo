@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>{% block title %} Sql Project {% endblock %}</title>
+
+</head>
+<body>
+    <header class="header">
+        <div class="Titre">
+
+        </div>
+        <nav class="nav">
+                <div class="liens_nav"><a href="#groupe1" class="gp">Groupe 1</a></div>
+                <div class="liens_nav"><a href="#groupe2" class="gp">Groupe 2</a></div>
+                <div class="liens_nav"><a href="#groupe3" class="gp">Groupe 3</a></div>
+                <div class="liens_nav"><a href="#groupe4" class="gp">Groupe 4</a></div>
+                <div class="liens_nav"><a href="#groupe5" class="gp">Groupe 5</a></div>
+                <div class="liens_nav"><a href="#groupe6" class="gp">Groupe 6</a></div>
+        </nav>
+    </header>
+    {% block content %}
+    <div class="conteneur">
+
+        <h1>Résultat des Requêtes SQL demandées</h1>
+        <div class="groupe1" id="groupe1">
+            <h2> Groupe1:  SELECT</h2>
+            {% for requette in group1 %}
+            <h3> Requêtes {{ group1.index(requette) + 1 }}</h3>
+                {% if group1.index(requette) == 0 %}
+                    <ol>
+                        {% for result in requette %}
+                        <li>
+                            <pre class="result"> <em>Nom et Prenoms</em> de l'artiste  d'id <strong>{{  result['id'] }}</strong>(ligne n°{{  result['id'] - 1620 }} ): <strong>{{ result['first_name'] }} {{ result['last_name'] }}</strong> né.e le <strong>{{ result['birthdate'] }}</strong></pre>
+                            <hr>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+                {% if group1.index(requette) == 1 %}
+                    <ol>
+                        {% for result in requette %}
+                        <li>
+                            <pre class="result"> <strong>Nom du lieu (ligne n°{{  result['id'] - 158 }}):</strong> <em>{{ result['name'] }}</em>  <strong>Sa capacité de:</strong> {{ result['max_spectators'] }} personnes.</pre>
+                            <hr>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+                {% if group1.index(requette) == 2 %}
+                    <ol>
+                        {% for result in requette %}
+                        <li>
+                            <pre class="result"> <strong>Prochain concert (ligne n°{{ result['id'] - 163 }})</strong> ayant lieu le <em>{{ result['date'] }}</em> de <em>{{ result['start_time'] }}</em> à <em>{{ result['end_time'] }}</em></pre>
+                            <hr>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+
+                {% endfor %}
+        </div>
+        <div class="groupe2" id="groupe2">
+            <h2> Groupe2:  WHERE</h2>
+            {% for requette in group2 %}
+            <h3> Requêtes {{ group2.index(requette) + 1 }}</h3>
+            {% if group2.index(requette) == 0 %}
+            <ol>
+                {% for result in requette %}
+                <li>
+                    <pre class="result"> <strong>{{ result['first_name'] }}</strong> <em>{{ result['last_name'] }}</em> est originaire de <strong>{{ result['country'] }}</strong></pre>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+        {% if group2.index(requette) == 1 %}
+            <ol>
+                {% for result in requette %}
+                <li>
+                    <pre class="result"> <strong>{{ result['first_name'] }}</strong> <em>{{ result['last_name'] }}</em> qui joue l'instrument <strong>{{ result['instrument'] }}</strong></pre>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+        {% if group2.index(requette) == 2 %}
+            <ol>
+                {% for result in requette %}
+                <li>
+                    <pre class="result"> <strong>{{ result['last_name'] }}</strong> <em>{{ result['first_name'] }}</em> né.e en <strong>{{ result['birthdate'] }}</strong></pre>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+        {% if group2.index(requette) == 3 %}
+            <ol>
+                {% for result in requette %}
+                <li>
+                    <pre class="result"> <strong>Concert (ligne n°{{ result['id'] - 163 }})</strong> ayant lieu le <em>{{ result['date'] }}</em></pre>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+        {% endfor %}
+        </div>
+        <div class="groupe3" id="groupe3">
+            <h2> Groupe3:  JOIN</h2>
+            {% for requette in group3 %}
+            <h3> Requêtes {{ group3.index(requette) + 1 }}</h3>
+                {% if group3.index(requette) == 0 %}
+                    <ol>
+                        {% for result in requette %}
+                        <li>
+                            <pre class="result"> L'artiste  <strong>{{ result['first_name'] }}</strong> <em>{{ result['last_name'] }}</em> présent au <strong>concert n°{{  result['id'] - 167 }}</strong> qui s'est déroulé le <strong>{{ result['date'] }}</strong> </pre>
+                            <hr>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+                {% if group3.index(requette) == 1 %}
+                    <ol>
+                        {% for result in requette %}
+                        <li>
+                            <pre class="result"> Le <strong>concert n°{{  result['id'] - 167 }}</strong> qui s'est déroulé le <strong>{{ result['date'] }}</strong> à <strong>{{ result['name'] }}</strong></pre>
+                            <hr>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+                {% if group3.index(requette) == 2 %}
+                    <ol>
+                        {% for result in requette %}
+                        <li>
+                            <pre class="result"> <strong>{{ result['instruments'] }}</strong> sont les instruments du <strong>groupe  d'id de groupe {{  result['id'] }}</strong> (ligne n°{{  result['id'] - 1740 }}) du nom de : <strong>{{ result['name'] }}</strong></pre>
+                            <hr>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+                {% if group3.index(requette) == 3 %}
+                <h4>Aucun musicien du nom de Retha Dookie, plutot Retha Dooley</h4>
+                <ol>
+                    {% for result in requette %}
+                    <li>
+                        <pre class="result">Il s'agit du concert d'id <strong>{{  result['concert_id']}}</strong> déroulé à la place <strong>{{  result['lieu']}}</strong> et qui débute à <strong>{{  result['debut']}}</strong></pre>
+                        <pre>Les membres du groupe sont: <strong>{{  result['artistes_groupe']}}</strong></pre>
+                        <hr>
+                    </li>
+                    {% endfor %}
+                </ol>
+           
+                {% endif %}
+
+                {% if group3.index(requette) == 4 %}
+                    <ol>
+                        {% for result in requette %}
+                        <li>
+                            <pre class="result"> Le <strong>panier moyen des ventes</strong> est : <strong>{{  result['panier_moyen']}}</strong>.</pre>
+                            <hr>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+                {% if group3.index(requette) == 5 %}
+                <h3>Toutes les start_time ont pour valeur NULL; impossible de travailler avec.</h3>
+
+                {% endif %}
+
+                {% if group3.index(requette) == 6 %}
+                    <ol>
+                        {% for result in requette %}
+                        <li>
+                            <pre class="result"> Salle : <strong>{{  result['salle']}}</strong>; dont les descriptions des contraintes sont: </pre>
+                            <strong>{{  result['descr']}}</strong>
+                            <hr>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+                {% if group3.index(requette) == 7 %}
+                    <ol>
+                        {% for result in requette %}
+                        <li>
+                            <pre class="result"> Le groupe <strong>{{  result['groupe']}}</strong>; occupe la salle: <strong>{{  result['salle']}}</strong></pre>
+                            
+                            <hr>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+
+                {% endfor %}
+        </div>
+        <div class="groupe4" id="groupe4">
+            <h2> Groupe4:  GROUP BY</h2>
+        {% for requette in group4 %}
+            <h3> Requêtes {{ group4.index(requette) + 1 }}</h3>
+            {% if group4.index(requette) == 0 %}
+            <ol>
+                {% for result in requette %}
+                <li>
+                    <pre class="result">Le groupe<em> <strong>{{ result['name'] }}</strong></em> comporte <strong>{{ result['nombre'] }} membre(s)</strong></pre>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ol>
+            {% endif %}
+
+            {% if group4.index(requette) == 1 %}
+            <h4>Aucune spécification sur le concert vu qu'il y en a d'ennulé/non approuvé donc on a considéré tous les tickets vendus</h4>
+            <ol>
+                {% for result in requette %}
+                <li>
+                    <pre class="result"><strong>{{ result['nombre'] }} places vendues</strong> pour le <em>Concert d'id= {{ result['concert_id'] }}</em> (ligne n° {{ result['concert_id'] - 167}})</pre>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ol>
+            {% endif %}
+
+            {% if group4.index(requette) == 2 %}
+            <ol>
+                {% for result in requette %}
+                <li>
+                    <pre class="result">Le <em>total </em>du <strong>{{ result['date'] }}</strong> est <strong>{{ result['total'] }}</strong> </pre>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ol>
+            {% endif %}
+
+            {% if group4.index(requette) == 3 %}
+            <ol>
+                {% for result in requette %}
+                <li>
+                    <pre class="result">La <em>moyenne du montant des ventes pour chaque concert</em> est de <strong>{{ result['moyenne'] }}</strong></pre>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ol>
+            {% endif %}
+            {% if group4.index(requette) == 4 %}
+            <ol>
+                {% for result in requette %}
+                <li>
+                    <pre class="result">Le <em> concert d'id <strong>{{ result['concert'] }}</strong></em> regroupe <strong>{{ result['nombre'] }} spectateurs.</strong></pre>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ol>
+            {% endif %}
+
+        {% endfor %}
+        </div>
+        <div class="groupe5" id="groupe5">
+            <h2> Groupe5: Requêtes ensemblistes </h2>
+            {% for requette in group5 %}
+            <h3> Requêtes {{ group5.index(requette) + 1 }} </h3>
+                {% if group5.index(requette) == 0 %}
+                <ol>
+                {% for result in requette %}
+                        <li>
+                            <pre class="result"><strong>{{ result['nom'] }} {{ result['prenom'] }}</strong> qui fonctionne en <strong>{{ result['travail'] }}</strong></pre>
+                            <hr>
+                        </li>
+                    {% endfor %}
+                </ol>
+                {% endif %}
+                {% if group5.index(requette) == 1 %}
+                <h4>Plusieurs mêmes personnes (puisque même personn_id) ont divers tâches en bénévolat; ils seront cités qu'une fois</h4>
+                <ol>
+                    {% for result in requette %}
+                        <li>
+                            <pre class="result"><strong>{{ result['nom'] }} {{ result['prenom'] }}</strong> qui fonctionne en <strong>{{ result['travail'] }}</strong>. C'est un <strong>{{ result['roles'] }}</strong></pre>
+                            <hr>
+                        </li>
+                    {% endfor %}
+                </ol>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="groupe6" id="groupe6">
+            <h2> Groupe6: Requêtes complexes</h2>
+            {% for requette in group6 %}
+            <h3> Requêtes {{ group6.index(requette) + 1 }}</h3>
+            <ol>
+                {% for result in requette %}
+                <li>
+                    <pre class="result">Bithdate: {{ result['birthdate'] }} and Id: {{ result['id'] }}</pre>
+                    <hr>
+                </li>
+                {% endfor %}
+            </ol>
+            {% endfor %}
+        </div>
+
+    </div>
+    {% endblock %}
+</body>
+</html>
